@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>TaxiTracker</title>
+</head>
+<body>
+<h1>TaxiTracker</h1>
+<br/>
+
+<p>Unos nove recenzije:</p><br/>
+<form action="#" th:action="@{/api/review/add}" th:object="${reviewDTO}" method="POST">
+CustomerID: <input type="text" name="customerID" th:field="*{customerID}"/><br/>
+DriverID: <input type="text" name="driverID" th:field="*{driverID}"/><br/>
+Score: <input type="text" name="score" th:field="*{score}"/><br/>
+Description: <input type="text" name="description" th:field="*{description}"/><br/>
+Date: <input type="text" name="date" th:field="*{date}"/><br/>
+<button name="Submit" type="submit" value="0">Submit</button>
+</form>
+
+<p>Brisanje recenzije:</p><br/>
+<form action="#" th:action="@{/api/review/del}" th:object="${deleteReview}" method="POST">
+ReviewID: <input type="text" name="tmpreviewID" th:field="*{reviewID}"/><br/>
+<button name="Submit" type="submit" value="-1">Submit</button>
+</form>
+
+<p>Dostupni taksisti:</p><br/>
+<div th:each="driver : ${allDrivers}">
+<a th:href="@{/showDriverReviews(driver_ID=${driver.driverID})}">
+<p th:text="${driver}"/>
+</a>
+</div>
+
+</body>
+</html>

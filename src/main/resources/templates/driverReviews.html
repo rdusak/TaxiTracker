@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>TaxiTracker</title>
+</head>
+<body>
+<h1>TaxiTracker</h1>
+<br/>
+
+
+<p th:text="${driver}"><br/>
+<p th:text="${driver.areaID}"></p>
+<pre th:text="${driver.email}"></pre>
+<div th:each="rev : ${reviews}">
+<pre th:text="${rev}"></pre>
+</div>
+
+
+
+</body>
+</html>
